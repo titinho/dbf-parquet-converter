@@ -1,6 +1,10 @@
 # DBF-Parquet Converter
 
+[![codecov](https://codecov.io/gh/titinho/dbf-parquet-converter/graph/badge.svg?token=5ADKWR0EDF)](https://codecov.io/gh/titinho/dbf-parquet-converter)
+
 This CLI tool helps you to convert DBF database files to parquet and back.
+
+## Installation
 
 ## Usage
 
@@ -12,5 +16,6 @@ There are some flags to use:
 Example
 
 ```bash
-go run main.go --input=Product.dbf --output=Product.parquet
+go build
+./dbf-parquet-converter --input=Product.dbf --output=Product.csv
 ```

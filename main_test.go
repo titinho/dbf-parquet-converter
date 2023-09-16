@@ -20,19 +20,19 @@ func TestProcessArgsFunc(t *testing.T) {
 	}{
 		{
 			description: "Happy case - long flags",
-			args:        []string{"--input=Product.dbf", "--output=Product.parquet"},
+			args:        []string{"--input=Product.dbf", "--output=Product.csv"},
 			want: want{
 				inputFile:  "Product.dbf",
-				outputFile: "Product.parquet",
+				outputFile: "Product.csv",
 				err:        nil,
 			},
 		},
 		{
 			description: "Happy case - short flags",
-			args:        []string{"-i=Product.dbf", "-o=Product.parquet"},
+			args:        []string{"-i=Product.dbf", "-o=Product.csv"},
 			want: want{
 				inputFile:  "Product.dbf",
-				outputFile: "Product.parquet",
+				outputFile: "Product.csv",
 				err:        nil,
 			},
 		},
@@ -47,7 +47,7 @@ func TestProcessArgsFunc(t *testing.T) {
 		},
 		{
 			description: "Error - input file not given",
-			args:        []string{"--output=Product.parquet"},
+			args:        []string{"--output=Product.csv"},
 			want: want{
 				inputFile:  "",
 				outputFile: "",
@@ -71,12 +71,12 @@ func TestProcessArgsFunc(t *testing.T) {
 		},
 		{
 			description: "Error - input file has invalid extension",
-			args:        []string{"--input=Product.xlsx", "--output=Product.parquet"},
+			args:        []string{"--input=Product.xlsx", "--output=Product.csv"},
 			want: want{
 				inputFile:  "",
 				outputFile: "",
 				err: fmt.Errorf(
-					"the input file must have dbf extension - %w",
+					"the input file must have dbf or DBF extension - %w",
 					ErrInvalidFileExtension,
 				),
 			},
@@ -88,7 +88,7 @@ func TestProcessArgsFunc(t *testing.T) {
 				inputFile:  "",
 				outputFile: "",
 				err: fmt.Errorf(
-					"the output file must have parquet extension - %w",
+					"the output file must have csv extension - %w",
 					ErrInvalidFileExtension,
 				),
 			},
